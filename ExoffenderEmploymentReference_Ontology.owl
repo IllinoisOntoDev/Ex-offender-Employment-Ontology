@@ -1,0 +1,147 @@
+@prefix : <https://purl.org/lis590od/Fall17/ExOffenderEmp#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://purl.org/lis590od/Fall17/ExOffenderEmp> .
+
+<https://purl.org/lis590od/Fall17/ExOffenderEmp> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://purl.org/lis590od/Fall17/ExOffenderEmp#Had_Previous_Education_Field
+:Had_Previous_Education_Field rdf:type owl:ObjectProperty ;
+                              rdfs:domain :Prisoner ;
+                              rdfs:range :Education_Field ;
+                              rdfs:comment "Indicate which education field that the prisoner had before." .
+
+
+###  https://purl.org/lis590od/Fall17/ExOffenderEmp#Had_Previous_Education_Level
+:Had_Previous_Education_Level rdf:type owl:ObjectProperty ;
+                              rdfs:domain :Prisoner ;
+                              rdfs:range :Education_Level ;
+                              rdfs:comment "Indicate which education level that the prisoner had before." .
+
+
+###  https://purl.org/lis590od/Fall17/ExOffenderEmp#Had_Previous_Occupation
+:Had_Previous_Occupation rdf:type owl:ObjectProperty ;
+                         rdfs:domain :Prisoner ;
+                         rdfs:range :Occupation ;
+                         rdfs:comment "Indicate which occupation that the prisoner had before." .
+
+
+###  https://purl.org/lis590od/Fall17/ExOffenderEmp#Is_Created_By
+:Is_Created_By rdf:type owl:ObjectProperty ;
+               rdfs:domain :Ex-offender_Employment_Reference ;
+               rdfs:range :Employment_Agency ;
+               rdfs:comment "To identify the employment angency who creates/files the employment reference" .
+
+
+###  https://purl.org/lis590od/Fall17/ExOffenderEmp#Is_Created_For
+:Is_Created_For rdf:type owl:ObjectProperty ;
+                rdfs:domain :Ex-offender_Employment_Reference ;
+                rdfs:range :Prisoner ;
+                rdfs:comment "Mapping between the reference document to the prisoner" .
+
+
+###  https://purl.org/lis590od/Fall17/ExOffenderEmp#Is_Referred_By
+:Is_Referred_By rdf:type owl:ObjectProperty ;
+                rdfs:domain :Prisoner ;
+                rdfs:range :Employment_Agency ;
+                rdfs:comment "Identify the angency who takes responsibility to refer the prisoner to an employment opportunity." .
+
+
+###  https://purl.org/lis590od/Fall17/ExOffenderEmp#Manage
+:Manage rdf:type owl:ObjectProperty ;
+        rdfs:domain :Employment_Agency ;
+        rdfs:range :Employment_Opportunity ;
+        rdfs:comment "To identify which employment agency manage which employment opportunities. An agency could be responsible for multiple employment opportunities." .
+
+
+###  https://purl.org/lis590od/Fall17/ExOffenderEmp#Refer_To
+:Refer_To rdf:type owl:ObjectProperty ;
+          rdfs:domain :Ex-offender_Employment_Reference ;
+          rdfs:range :Employment_Opportunity ;
+          rdfs:comment "Mapping between a reference document to the corrsponding employment opportunity." .
+
+
+###  https://purl.org/lis590od/Fall17/ExOffenderEmp#Refer_To_Occupation
+:Refer_To_Occupation rdf:type owl:ObjectProperty ;
+                     rdfs:domain :Employment_Opportunity ;
+                     rdfs:range :Occupation ;
+                     rdfs:comment "Indicate the occupation that the employment opportunity refers to." .
+
+
+###  https://purl.org/lis590od/Fall17/ExOffenderEmp#Require
+:Require rdf:type owl:ObjectProperty ;
+         rdfs:domain :Employment_Opportunity ;
+         rdfs:range :Education_Field ,
+                    :Education_Level ;
+         rdfs:comment "Indicate which requirements that the employment opportunity has, including educational field and level." .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://purl.org/lis590od/Fall17/ExOffenderEmp#Age
+:Age rdf:type owl:DatatypeProperty ;
+     rdfs:domain :Prisoner ;
+     rdfs:comment "Age of the prisoner." .
+
+
+###  https://purl.org/lis590od/Fall17/ExOffenderEmp#Document_ID
+:Document_ID rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Ex-offender_Employment_Reference ;
+             rdfs:comment "Reference Document ID. Each document is equipvalent to one prisoner and one opportunity only." .
+
+
+###  https://purl.org/lis590od/Fall17/ExOffenderEmp#Duration_Left_In_Prison
+:Duration_Left_In_Prison rdf:type owl:DatatypeProperty ;
+                         rdfs:domain :Prisoner ;
+                         rdfs:comment "Indicate how long does the prisoner have to stay in the prison. This is a dynamic value (change and updated overtime)" .
+
+
+###  https://purl.org/lis590od/Fall17/ExOffenderEmp#Name
+:Name rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Prisoner ;
+      rdfs:comment "Name of the prisoner" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://purl.org/lis590od/Fall17/ExOffenderEmp#Education_Field
+:Education_Field rdf:type owl:Class .
+
+
+###  https://purl.org/lis590od/Fall17/ExOffenderEmp#Education_Level
+:Education_Level rdf:type owl:Class .
+
+
+###  https://purl.org/lis590od/Fall17/ExOffenderEmp#Employment_Agency
+:Employment_Agency rdf:type owl:Class .
+
+
+###  https://purl.org/lis590od/Fall17/ExOffenderEmp#Employment_Opportunity
+:Employment_Opportunity rdf:type owl:Class .
+
+
+###  https://purl.org/lis590od/Fall17/ExOffenderEmp#Ex-offender_Employment_Reference
+:Ex-offender_Employment_Reference rdf:type owl:Class .
+
+
+###  https://purl.org/lis590od/Fall17/ExOffenderEmp#Occupation
+:Occupation rdf:type owl:Class .
+
+
+###  https://purl.org/lis590od/Fall17/ExOffenderEmp#Prisoner
+:Prisoner rdf:type owl:Class ;
+          rdfs:comment "Information about the person who is in prison by the time they are enrolled the ex-offender employment reference system." .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
