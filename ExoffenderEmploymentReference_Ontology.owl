@@ -105,6 +105,11 @@
                          rdfs:comment "Indicate how long does the prisoner have to stay in the prison. This is a dynamic value (change and updated overtime)" .
 
 
+###  http://purl.org/lis590od/Fall17/ExOffenderEmp#Duration_of_program
+:Duration_of_program rdf:type owl:DatatypeProperty ;
+                     rdfs:domain :Education_Level .
+
+
 ###  http://purl.org/lis590od/Fall17/ExOffenderEmp#Name
 :Name rdf:type owl:DatatypeProperty ;
       rdfs:domain :Prisoner ;
@@ -114,6 +119,39 @@
 #################################################################
 #    Classes
 #################################################################
+
+###  http://purl.org/lis590od/Fall17/ExOffenderEmp#Degree_Prisoner
+:Degree_Prisoner rdf:type owl:Class ;
+                 rdfs:subClassOf :Prisoner ,
+                                 [ rdf:type owl:Class ;
+                                   owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :Had_Previous_Education_Level ;
+                                                   owl:hasValue :Bachelor_Degree
+                                                 ]
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :Had_Previous_Education_Level ;
+                                                   owl:hasValue :Diploma
+                                                 ]
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :Had_Previous_Education_Level ;
+                                                   owl:hasValue :High_School
+                                                 ]
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :Had_Previous_Education_Level ;
+                                                   owl:hasValue :Master_Degree
+                                                 ]
+                                               )
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :Had_Previous_Education_Field ;
+                                   owl:someValuesFrom :Education_Field
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :Duration_Left_In_Prison ;
+                                   owl:maxQualifiedCardinality "12"^^xsd:nonNegativeInteger ;
+                                   owl:onDataRange xsd:integer
+                                 ] .
+
 
 ###  http://purl.org/lis590od/Fall17/ExOffenderEmp#Education_Field
 :Education_Field rdf:type owl:Class ;
@@ -132,12 +170,21 @@
 
 ###  http://purl.org/lis590od/Fall17/ExOffenderEmp#Employment_Opportunity
 :Employment_Opportunity rdf:type owl:Class ;
-                        rdfs:comment "Indicate the employment opportunity, including informatuon about the opportunity" .
+                        rdfs:comment "Indicate the employment opportunity, including information about the opportunity" .
 
 
 ###  http://purl.org/lis590od/Fall17/ExOffenderEmp#Ex-offender_Employment_Reference
 :Ex-offender_Employment_Reference rdf:type owl:Class ;
                                   rdfs:comment "The document contains information about the ex-offender who is referred, which employment opportunity refers to, who is the agency that responsible." .
+
+
+###  http://purl.org/lis590od/Fall17/ExOffenderEmp#Non-Degree_Prisoner
+:Non-Degree_Prisoner rdf:type owl:Class ;
+                     rdfs:subClassOf :Prisoner ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :Had_Previous_Education_Level ;
+                                       owl:hasValue :None_Degree
+                                     ] .
 
 
 ###  http://purl.org/lis590od/Fall17/ExOffenderEmp#Occupation
@@ -148,6 +195,73 @@
 ###  http://purl.org/lis590od/Fall17/ExOffenderEmp#Prisoner
 :Prisoner rdf:type owl:Class ;
           rdfs:comment "Information about the person who is in prison by the time they are enrolled the ex-offender employment reference system." .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://purl.org/lis590od/Fall17/ExOffenderEmp#Bachelor_Degree
+:Bachelor_Degree rdf:type owl:NamedIndividual ,
+                          :Education_Level .
+
+
+###  http://purl.org/lis590od/Fall17/ExOffenderEmp#Computer
+:Computer rdf:type owl:NamedIndividual ,
+                   :Education_Field .
+
+
+###  http://purl.org/lis590od/Fall17/ExOffenderEmp#Diploma
+:Diploma rdf:type owl:NamedIndividual ,
+                  :Education_Level .
+
+
+###  http://purl.org/lis590od/Fall17/ExOffenderEmp#Education
+:Education rdf:type owl:NamedIndividual ,
+                    :Education_Field .
+
+
+###  http://purl.org/lis590od/Fall17/ExOffenderEmp#High_School
+:High_School rdf:type owl:NamedIndividual ,
+                      :Education_Level .
+
+
+###  http://purl.org/lis590od/Fall17/ExOffenderEmp#Linh_Hoang
+:Linh_Hoang rdf:type owl:NamedIndividual ,
+                     :Degree_Prisoner ,
+                     :Prisoner ;
+            :Had_Previous_Education_Field :Mechanical ;
+            :Had_Previous_Education_Level :Master_Degree ;
+            :Age 30 ;
+            :Duration_Left_In_Prison 11 ;
+            :Name "Linh K Hoang"^^xsd:string .
+
+
+###  http://purl.org/lis590od/Fall17/ExOffenderEmp#Master_Degree
+:Master_Degree rdf:type owl:NamedIndividual ,
+                        :Education_Level .
+
+
+###  http://purl.org/lis590od/Fall17/ExOffenderEmp#Mechanical
+:Mechanical rdf:type owl:NamedIndividual ,
+                     :Education_Field .
+
+
+###  http://purl.org/lis590od/Fall17/ExOffenderEmp#Minh_Nguyen
+:Minh_Nguyen rdf:type owl:NamedIndividual ,
+                      :Non-Degree_Prisoner ,
+                      :Prisoner ;
+             :Had_Previous_Education_Level :None_Degree .
+
+
+###  http://purl.org/lis590od/Fall17/ExOffenderEmp#None_Degree
+:None_Degree rdf:type owl:NamedIndividual ,
+                      :Education_Level .
+
+
+###  http://purl.org/lis590od/Fall17/ExOffenderEmp#Sales
+:Sales rdf:type owl:NamedIndividual ,
+                :Education_Field .
 
 
 ###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
