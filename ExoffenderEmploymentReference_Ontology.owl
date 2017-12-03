@@ -145,11 +145,6 @@
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty :Had_Previous_Education_Field ;
                                    owl:someValuesFrom :Education_Field
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :Duration_Left_In_Prison ;
-                                   owl:maxQualifiedCardinality "12"^^xsd:nonNegativeInteger ;
-                                   owl:onDataRange xsd:integer
                                  ] .
 
 
@@ -194,6 +189,15 @@
 
 ###  http://purl.org/lis590od/Fall17/ExOffenderEmp#Prisoner
 :Prisoner rdf:type owl:Class ;
+          rdfs:subClassOf [ rdf:type owl:Restriction ;
+                            owl:onProperty :Duration_Left_In_Prison ;
+                            owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                 owl:onDatatype xsd:integer ;
+                                                 owl:withRestrictions ( [ xsd:minInclusive 1
+                                                                        ]
+                                                                      )
+                                               ]
+                          ] ;
           rdfs:comment "Information about the person who is in prison by the time they are enrolled the ex-offender employment reference system." .
 
 
