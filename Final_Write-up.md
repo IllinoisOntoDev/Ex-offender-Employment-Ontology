@@ -5,7 +5,7 @@
 
 https://github.com/IllinoisOntoDev/Ex-offender-Employment-Ontology/blob/master/ExoffenderEmploymentReference_Ontology_withoutImports.owl
 
-### 2. Link to access my ontology using some other volobularies: 
+### 2. Link to access my ontology using some other vocabularies: 
 
 https://github.com/IllinoisOntoDev/Ex-offender-Employment-Ontology/blob/master/ExoffenderEmploymentReference_Ontology.owl
 
