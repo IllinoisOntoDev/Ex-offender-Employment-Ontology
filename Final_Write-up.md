@@ -1,11 +1,11 @@
 
 # Ex-offender Employment Reference Ontology Final Write-up
 
-# 1. Link to access my ontology without imports: 
+### 1. Link to access my ontology without imports: 
 
 https://github.com/IllinoisOntoDev/Ex-offender-Employment-Ontology/blob/master/ExoffenderEmploymentReference_Ontology_withoutImports.owl
 
-# 2. Link to access my ontology using some other volobularies: 
+### 2. Link to access my ontology using some other volobularies: 
 
 https://github.com/IllinoisOntoDev/Ex-offender-Employment-Ontology/blob/master/ExoffenderEmploymentReference_Ontology.owl
 
@@ -17,11 +17,11 @@ In particular, I imported and used 2 vocabularies:
 
 You also can access the published ontology via the link: http://purl.org/lis590od/Fall17/XOffenderEmp
 
-# 3. Using one of the Angency relationship terms: 
+### 3. Using one of the Angency relationship terms: 
 
 _ I imported the http://purl.org/lis590od/Fall17/OrgRel#agency into my ontology and used this as a super class for my Employment_Agency class which represents for Angency to take responsibility to refer prisoner to an employment opportunity.
 
-# 4. Testing the imported vocabularies and new inferences:
+### 4. Testing the imported vocabularies and new inferences:
 
 - Inference 1: Prisoner class has 2 sub-classes: Non-degree and Degree. For those who non-degree, the previous education level should be empty (since they didn't have any education before, we assume). I created a reference to setup this rule and it ran successfully in Protege. Everytime you create a new Non-degree prisoner, the system will automatically fill  in the Education Level to "non-degree".
 
